@@ -1,0 +1,75 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container mt-4">
+    <h1 class="mb-4 text-center">Financial Overview</h1>
+
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Total Account Balance</h5>
+                    <h2 id="totalBalance" class="card-text text-primary">₹{{"{:,}".format(total)}}</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Monthly Earnings</h5>
+                    <h2 id="monthlyEarnings" class="card-text text-success">₹{{"{:,}".format(monthly_earnings)}}</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Monthly Expenditure</h5> 
+                    <h2 id="monthlyExpenditure" class="card-text text-danger">₹{{"{:,}".format(monthly_expenditure)}}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-header">
+            <h5 class="card-title mb-0">Recent Transactions</h5>
+        </div>
+        <div class="card-body">
+            {% if transactions %}
+            <table id="transactionsTable" class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Transaction ID</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Account Number</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Amount</th>
+                        <th scope="col">Category</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for transaction in recent %}
+                    {% if transaction.type == 'income' %}
+                        <tr class="table-success">
+                    {% else %}
+                        <tr class="table-danger">
+                    {% endif %}
+                            <td>{{transaction.tno}}</td>
+                            <td>{{transaction.date}}</td>
+                            <td>{{transaction.accno}}</td>
+                            <td>{{transaction.type}}</td>
+                            <td>{{"{:,}".format(transaction.amount)}}</td>
+                            <td>{{transaction.category}}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <div class="alert alert-info" role="info">
+                <i class="fas fa-exclamation-circle"></i> &nbsp; No transactions yet.
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

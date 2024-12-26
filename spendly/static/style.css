@@ -1,0 +1,60 @@
+option:first {
+  color: #cbc2c2;
+}
+
+body[data-bs-theme="light"] #link:link,
+body[data-bs-theme="light"] #link:visited {
+  color: #bb0f7f;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+body[data-bs-theme="light"] #link:hover {
+  color: #57073b;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+body[data-bs-theme="dark"] #link:link,
+body[data-bs-theme="dark"] #link:visited {
+  color: #DCAE96;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+body[data-bs-theme="dark"] #link:hover {
+  color: #de926a;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+/* Optional: Darken the background of the entire table */
+body[data-bs-theme="dark"] .table {
+  background-color: #212529;
+}
+
+body[data-bs-theme="dark"] .table-success {
+  background-color: #0080ff !important;
+}
+
+
+
+
+body[data-bs-theme="dark"] .table-success {
+  --bs-table-bg: #051B11;
+  --bs-table-color: #75B798;
+  --bs-table-border-color: #007440;
+  color: var(--bs-table-color);
+  border-color: var(--bs-table-border-color);
+  border-width: 1px;
+}
+
+body[data-bs-theme="dark"] .table-danger {
+  --bs-table-bg: #2C0B0E;
+  --bs-table-color: #bd6c77;
+  --bs-table-border-color: #bd6c77;
+  color: var(--bs-table-color);
+  border-color: var(--bs-table-border-color);
+  border-width: 0.5px;
+
+}
